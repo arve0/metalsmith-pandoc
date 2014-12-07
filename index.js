@@ -33,7 +33,10 @@ function plugin(options){
   return function(files, metalsmith, done){
     async.each(Object.keys(files), function(file, cb){
       debug('checking file: %s', file);
-      if (!minimatch(file, pattern)) return;
+      if (!minimatch(file, pattern)) {
+        cb(); // count
+        return; // do nothing
+      }
       var data = files[file];
       var dir = dirname(file);
       var html = basename(file, extname(file)) + '.html';
@@ -47,9 +50,6 @@ function plugin(options){
         files[html] = data;
         cb(err);
       });
-    }, function(){ // TODO replace cb
-      debug('done');
-      done();
-    });
+    }, done);
   };
 }
