@@ -1,6 +1,6 @@
 {
   "name": "metalsmith-pandoc",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Pandoc plugin for metalsmith",
   "main": "index.js",
   "scripts": {
@@ -26,7 +26,6 @@
     "debug": "^2.1.0",
     "minimatch": "^2.0.1",
     "pandoc-bin": "^0.1.2",
-    "pdc": "^0.2.1",
-    "sync": "^0.2.3"
+    "pdc": "^0.2.1"
   }
 }
