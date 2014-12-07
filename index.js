@@ -32,7 +32,7 @@ function plugin(options){
 
   return function(files, metalsmith, done){
     async.each(Object.keys(files), function(file, cb){
-      debug('checking file: %s', file);
+      debug('Checking file: %s', file);
       if (!minimatch(file, pattern)) {
         cb(); // count
         return; // do nothing
@@ -42,9 +42,14 @@ function plugin(options){
       var html = basename(file, extname(file)) + '.html';
       if ('.' != dir) html = dir + '/' + html;
 
-      debug('converting file: %s', file);
-      pdc(data.contents.toString(), from, to, args, opts, function(err,res){
-        debug('converted %s: %s...', file, res.substring(0,25));
+      debug('Converting file: %s', file);
+      var md = data.contents.toString();
+      pdc(md, from, to, args, opts, function(err,res){
+        if (err) debug('ERROR: %s', err);
+        if (res == '') {
+          debug('WARNING: Empty string from pdc. String sent: %s', md.substring(0,10));
+        }
+        debug('Converted %s: %s...', file, res.substring(0,25));
         data.contents = new Buffer(res);
         delete files[file];
         files[html] = data;
