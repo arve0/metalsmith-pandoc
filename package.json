@@ -1,0 +1,32 @@
+{
+  "name": "metalsmith-pandoc",
+  "version": "0.0.1",
+  "description": "Pandoc plugin for metalsmith",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arve0/metalsmith-pandoc"
+  },
+  "keywords": [
+    "pandoc",
+    "markdown",
+    "metalsmith"
+  ],
+  "author": "Arve Seljebu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arve0/metalsmith-pandoc/issues"
+  },
+  "homepage": "https://github.com/arve0/metalsmith-pandoc",
+  "dependencies": {
+    "debug": "^2.1.0",
+    "metalsmith-each": "^0.1.0",
+    "minimatch": "^2.0.1",
+    "pandoc-bin": "^0.1.2",
+    "pdc": "^0.2.1",
+    "sync": "^0.2.3"
+  }
+}
