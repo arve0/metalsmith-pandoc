@@ -22,7 +22,7 @@ options = {
 ```
 
 For overriding the defaults, pass an object to plugin:
-``
+```
 .use(pandoc({
   pattern: 'html/**/*.rst',
   from: 'rst',
