@@ -42,14 +42,14 @@ function plugin(options){
       var html = basename(file, extname(file)) + '.html';
       if ('.' != dir) html = dir + '/' + html;
 
-      debug('Converting file: %s', file);
+      debug('Converting file %s', file);
       var md = data.contents.toString();
       pdc(md, from, to, args, opts, function(err,res){
         if (err) debug('ERROR: %s', err);
         if (res == '') {
-          debug('WARNING: Empty string from pdc. String sent: %s', md.substring(0,10));
+          debug('WARNING: Empty string from pdc. String sent: %s...', md.substring(0,10).replace('\n',''));
         }
-        debug('Converted %s: %s...', file, res.substring(0,25));
+        debug('Converted file %s. Converted: %s...', file, res.substring(0,10).replace('\n',''));
         data.contents = new Buffer(res);
         delete files[file];
         files[html] = data;
