@@ -45,15 +45,23 @@ function plugin(options){
       debug('Converting file %s', file);
       var md = data.contents.toString();
       pdc(md, from, to, args, opts, function(err,res){
-        if (err) debug('ERROR: %s', err);
-        if (res == '') {
-          debug('WARNING: Empty string from pdc. String sent: %s...', md.substring(0,10).replace('\n',''));
+        if (err){
+          msg = file + ': ' + err;
+          debug(msg);
+          cb(msg);
+          return;
+        }
+        if (res === undefined || res === ''){
+          var msg = 'ERROR: nothing returned from pandoc for file ' + file;
+          debug(msg);
+          cb(new Error(msg));
+          return;
         }
         debug('Converted file %s. Converted: %s...', file, res.substring(0,10).replace('\n',''));
         data.contents = new Buffer(res);
         delete files[file];
         files[html] = data;
-        cb(err);
+        cb();
       });
     }, done);
   };
