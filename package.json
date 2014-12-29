@@ -1,10 +1,10 @@
 {
   "name": "metalsmith-pandoc",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Pandoc plugin for metalsmith",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,10 @@
     "minimatch": "^2.0.1",
     "pandoc-bin": "^0.1.2",
     "pdc": "^0.2.2"
+  },
+  "devDependencies": {
+    "assert-dir-equal": "^1.0.1",
+    "metalsmith": "^1.0.1",
+    "mocha": "^2.1.0"
   }
 }
