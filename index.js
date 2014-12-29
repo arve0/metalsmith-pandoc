@@ -46,7 +46,7 @@ function plugin(options){
       var md = data.contents.toString();
       pdc(md, from, to, args, opts, function(err,res){
         if (err){
-          msg = file + ': ' + err;
+          msg = 'metalsmith-pandoc: ' + file + ' - ' + err;
           debug(msg);
           cb(msg);
           return;
