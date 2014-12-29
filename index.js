@@ -25,7 +25,7 @@ module.exports = plugin;
 function plugin(options){
   options = options || {};
   var from = options.from || 'markdown';
-  var to   = options.to   || 'html';
+  var to   = options.to   || 'html5';
   var args = options.args || [];
   var opts = options.opts || [];
   var pattern = options.pattern || '**/*.md';
