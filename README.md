@@ -17,7 +17,7 @@ As default, plugin will use these settings:
 ```
 options = {
   from: 'markdown',
-  to:   'html',
+  to:   'html5',
   args: [],
   opts: [],
   pattern: '**/*.md' // minimatch
