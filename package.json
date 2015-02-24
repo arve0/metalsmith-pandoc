@@ -26,7 +26,8 @@
     "debug": "^2.1.0",
     "minimatch": "^2.0.1",
     "pandoc-bin": "^0.1.2",
-    "pdc": "^0.2.2"
+    "pdc": "^0.2.2",
+    "which": "^1.0.8"
   },
   "devDependencies": {
     "assert-dir-equal": "^1.0.1",

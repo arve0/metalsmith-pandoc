@@ -6,10 +6,24 @@ var pdcPath   = require('pandoc-bin').path;
 var pdc       = require('pdc');
 var minimatch = require('minimatch');
 var each      = require('async-each');
-
+var which     = require('which');
+var fs        = require('fs');
 
 // use pandoc-bin
 pdc.path = pdcPath;
+// check if installation of pandoc-bin is ok
+fs.stat(pdcPath, function(err, stats){
+  if (err) {
+    console.log('metalsmith-pandoc: trouble with pandoc-bin installation');
+    console.log('metalsmith-pandoc: trying to use system installed pandoc');
+    // try to use system installed pandoc
+    which('pandoc', function(err,cmd){
+      if (!err) pdc.path = cmd;
+      else console.log('metalsmith-pandoc: ERROR pandoc not found');
+    });
+  }
+});
+
 
 /**
  * Expose `plugin`.
