@@ -5,7 +5,7 @@ var debug     = require('debug')('metalsmith-pandoc');
 var pdcPath   = require('pandoc-bin').path;
 var pdc       = require('pdc');
 var minimatch = require('minimatch');
-var async     = require('async');
+var each      = require('async-each');
 
 
 // use pandoc-bin
@@ -31,7 +31,7 @@ function plugin(options){
   var pattern = options.pattern || '**/*.md';
 
   return function(files, metalsmith, done){
-    async.each(Object.keys(files), function(file, cb){
+    each(Object.keys(files), function(file, cb){
       debug('Checking file: %s', file);
       if (!minimatch(file, pattern)) {
         cb(); // count
