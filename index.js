@@ -29,6 +29,7 @@ function plugin(options){
   var args = options.args || [];
   var opts = options.opts || [];
   var pattern = options.pattern || '**/*.md';
+  var extension = options.ext || '.html';
 
   return function(files, metalsmith, done){
     each(Object.keys(files), function(file, cb){
@@ -39,7 +40,7 @@ function plugin(options){
       }
       var data = files[file];
       var dir = dirname(file);
-      var html = basename(file, extname(file)) + '.html';
+      var html = basename(file, extname(file)) + extension;
       if ('.' != dir) html = dir + '/' + html;
 
       debug('Converting file %s', file);

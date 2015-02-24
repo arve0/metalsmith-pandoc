@@ -20,7 +20,8 @@ options = {
   to:   'html5',
   args: [],
   opts: [],
-  pattern: '**/*.md' // minimatch
+  pattern: '**/*.md', // minimatch
+  ext: '.html' // extension for output file
 };
 ```
 
@@ -29,6 +30,8 @@ For overriding the defaults, pass an object to plugin:
 .use(pandoc({
   pattern: 'html/**/*.rst',
   from: 'rst',
+  to: 'markdown',
+  ext: '.md'
 }))
 ```
 See [pdc](https://github.com/pvorb/node-pdc#api) and [pandoc](http://johnmacfarlane.net/pandoc/README.html) for more detailed description of options.
