@@ -13,7 +13,7 @@ var fs        = require('fs');
 pdc.path = pdcPath;
 // check if installation of pandoc-bin is ok
 fs.stat(pdcPath, function(err, stats){
-  if (err) {
+  if (err || !isExecutable(stats.mode)) {
     console.log('metalsmith-pandoc: trouble with pandoc-bin installation');
     console.log('metalsmith-pandoc: trying to use system installed pandoc');
     // try to use system installed pandoc
@@ -23,6 +23,11 @@ fs.stat(pdcPath, function(err, stats){
     });
   }
 });
+
+function isExecutable(mode){
+  var unixMode = mode & 07777;
+  return (unixMode % 2 == 1);
+}
 
 
 /**
