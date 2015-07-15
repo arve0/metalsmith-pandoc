@@ -8,6 +8,7 @@ var minimatch = require('minimatch');
 var each      = require('async-each');
 var which     = require('which');
 var fs        = require('fs');
+var platform  = require('os').platform;
 
 // use pandoc-bin
 pdc.path = pdcPath;
@@ -25,6 +26,7 @@ fs.stat(pdcPath, function(err, stats){
 });
 
 function isExecutable(mode){
+  if (platform() === 'win32') return true;  // do not check +x on windows
   var unixMode = mode & 07777;
   return (unixMode % 2 == 1);
 }
