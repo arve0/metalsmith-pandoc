@@ -55,7 +55,7 @@ function plugin(options){
   return function(files, metalsmith, done){
     each(Object.keys(files), function(file, cb){
       debug('Checking file: %s', file);
-      debug('Minimatch:' %s %s %s, file, pattern, minimatch(file, pattern))
+      debug('Minimatch: %s %s %s', file, pattern, minimatch(file, pattern))
       if (!minimatch(file, pattern)) {
         cb(); // count
         return; // do nothing
