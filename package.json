@@ -1,6 +1,6 @@
 {
   "name": "metalsmith-pandoc",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Pandoc plugin for metalsmith",
   "main": "index.js",
   "scripts": {
@@ -8,24 +8,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/arve0/metalsmith-pandoc"
+    "url": "https://github.com/iilab/metalsmith-pandoc"
   },
   "keywords": [
     "pandoc",
     "markdown",
     "metalsmith"
   ],
-  "author": "Arve Seljebu",
+  "author": "Jun Matsushita",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/arve0/metalsmith-pandoc/issues"
+    "url": "https://github.com/iilab/metalsmith-pandoc/issues"
   },
-  "homepage": "https://github.com/arve0/metalsmith-pandoc",
+  "homepage": "https://github.com/iilab/metalsmith-pandoc",
   "dependencies": {
     "async-each": "^0.1.6",
     "debug": "^2.1.0",
     "minimatch": "^2.0.1",
-    "pandoc-bin": "mastern2k3/pandoc-bin",
+    "pandoc-bin": "iilab/pandoc-bin",
     "pdc": "^0.2.2",
     "which": "^1.0.8"
   },
