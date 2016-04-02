@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/iilab/metalsmith-pandoc",
   "dependencies": {
-    "async-each": "^0.1.6",
+    "async": "^1.5.2",
     "debug": "^2.1.0",
     "minimatch": "^2.0.1",
     "pandoc-bin": "iilab/pandoc-bin",
