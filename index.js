@@ -2,7 +2,6 @@ var basename  = require('path').basename;
 var dirname   = require('path').dirname;
 var extname   = require('path').extname;
 var debug     = require('debug')('metalsmith-pandoc');
-var pdcPath   = require('pandoc-bin').path;
 var pdc       = require('pdc');
 var minimatch = require('minimatch');
 var async     = require('async');
@@ -10,20 +9,15 @@ var which     = require('which');
 var fs        = require('fs');
 var platform  = require('os').platform;
 
-// use pandoc-bin
-pdc.path = pdcPath;
-// check if installation of pandoc-bin is ok
-fs.stat(pdcPath, function(err, stats){
-  if (err || !isExecutable(stats.mode)) {
-    console.log('metalsmith-pandoc: trouble with pandoc-bin installation');
-    console.log('metalsmith-pandoc: trying to use system installed pandoc');
-    // try to use system installed pandoc
-    which('pandoc', function(err,cmd){
-      if (!err) pdc.path = cmd;
-      else console.log('metalsmith-pandoc: ERROR pandoc not found');
-    });
+// use system installed pandoc
+which('pandoc', function(err,cmd){
+  if (!err) pdc.path = cmd;
+  else {
+    console.err('metalsmith-pandoc: Cannot find pandoc on the system. Please install it!');
+    process.exit(1)
   }
 });
+
 
 function isExecutable(mode){
   if (platform() === 'win32') return true;  // do not check +x on windows
