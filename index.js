@@ -3,7 +3,7 @@ var dirname   = require('path').dirname;
 var extname   = require('path').extname;
 var debug     = require('debug')('metalsmith-pandoc');
 var pdc       = require('pdc');
-var minimatch = require('minimatch');
+var match     = require('multimatch');
 var async     = require('async');
 var which     = require('which');
 var fs        = require('fs');
@@ -49,8 +49,8 @@ function plugin(options){
   return function(files, metalsmith, done){
     async.eachLimit(Object.keys(files), 100, function(file, cb){
       debug('Checking file: %s', file);
-      debug('Minimatch: %s %s %s', file, pattern, minimatch(file, pattern))
-      if (!minimatch(file, pattern)) {
+      debug('Multimatch: %s %s %s', file, pattern, match(file, pattern))
+      if (!match(file, pattern)) {
         cb(); // count
         return; // do nothing
       }

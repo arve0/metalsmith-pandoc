@@ -27,7 +27,7 @@
   "dependencies": {
     "async": "^2.0.0-rc.2",
     "debug": "^2.1.0",
-    "minimatch": "^2.0.1",
+    "multimatch": "^2.1.0",
     "pdc": "cherbst/node-pdc",
     "which": "^1.0.8"
   },
