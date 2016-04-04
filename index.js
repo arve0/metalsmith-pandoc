@@ -13,7 +13,7 @@ var platform  = require('os').platform;
 which('pandoc', function(err,cmd){
   if (!err) pdc.path = cmd;
   else {
-    console.err('metalsmith-pandoc: Cannot find pandoc on the system. Please install it!');
+    console.log('metalsmith-pandoc: Cannot find pandoc on the system. Please install it!');
     process.exit(1)
   }
 });
