@@ -50,7 +50,7 @@ function plugin(options){
     async.eachLimit(Object.keys(files), 100, function(file, cb){
       debug('Checking file: %s', file);
       debug('Multimatch: %s %s %s', file, pattern, match(file, pattern))
-      if (!match(file, pattern)) {
+      if (match(file, pattern) == 0) {
         cb(); // count
         return; // do nothing
       }
