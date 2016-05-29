@@ -1,11 +1,13 @@
 # metalsmith-pandoc
-Wrap around pdc. Uses same arguments as [pdc](https://github.com/pvorb/node-pdc). Pandoc doesn't need to be system installed, the package requires pandoc-bin and sets path for pdc to pandoc-bin.
+Wrap around [pdc](https://github.com/pvorb/node-pdc). Pandoc needs to be [system installed](http://pandoc.org/installing.html).
 
-# Install
-`npm install metalsmith-pandoc`
-
-# Usage
+## Install
+```sh
+npm install metalsmith-pandoc
 ```
+
+## Usage
+```js
 pandoc = require('metalsmith-pandoc');
 
 Metalsmith(__dirname)
@@ -36,5 +38,5 @@ For overriding the defaults, pass an object to plugin:
 ```
 See [pdc](https://github.com/pvorb/node-pdc#api) and [pandoc](http://johnmacfarlane.net/pandoc/README.html) for more detailed description of options.
 
-# Credit
-Stealed code from [metalsmith-markdown](https://github.com/segmentio/metalsmith-markdown).
+## Credit
+Stole code from [metalsmith-markdown](https://github.com/segmentio/metalsmith-markdown).
