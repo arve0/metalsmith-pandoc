@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "node check.js",
-    "test": "mocha"
+    "prepublish": "npm test",
+    "test": "mocha test/test.js"
   },
   "repository": {
     "type": "git",
@@ -26,8 +27,8 @@
     "async": "^2.0.0-rc.2",
     "debug": "^2.1.0",
     "multimatch": "^2.1.0",
-    "pandoc-bin": "arve0/pandoc-bin#f73e639",
     "pdc": "cherbst/node-pdc",
+    "system-install": "0.0.4",
     "which": "^1.0.8"
   },
   "devDependencies": {

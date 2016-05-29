@@ -6,25 +6,16 @@ var pdc       = require('pdc');
 var match     = require('multimatch');
 var async     = require('async');
 var which     = require('which');
-var fs        = require('fs');
-var platform  = require('os').platform;
+var install   = require('system-install')();
 
-// use system installed pandoc
-which('pandoc', function(err,cmd){
-  if (!err) pdc.path = cmd;
-  else {
-    console.log('metalsmith-pandoc: Cannot find pandoc on the system. Please install it!');
-    process.exit(1)
-  }
-});
-
-
-function isExecutable(mode){
-  if (platform() === 'win32') return true;  // do not check +x on windows
-  var unixMode = mode & 07777;
-  return (unixMode % 2 == 1);
+// check if pandoc is installed
+try {
+  pdc.path = which.sync('pandoc');
+} catch (e) {
+  console.log('metalsmith-pandoc: Cannot find pandoc on the system. Please install it with: ' + install + ' pandoc');
+  // fail hard
+  process.exit(1);
 }
-
 
 /**
  * Expose `plugin`.
