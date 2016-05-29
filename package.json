@@ -1,9 +1,10 @@
 {
   "name": "metalsmith-pandoc",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Pandoc plugin for metalsmith",
   "main": "index.js",
   "scripts": {
+    "postinstall": "node check.js",
     "test": "mocha"
   },
   "repository": {
@@ -22,11 +23,11 @@
   },
   "homepage": "https://github.com/arve0/metalsmith-pandoc",
   "dependencies": {
-    "async-each": "^0.1.6",
+    "async": "^2.0.0-rc.2",
     "debug": "^2.1.0",
-    "minimatch": "^2.0.1",
+    "multimatch": "^2.1.0",
     "pandoc-bin": "arve0/pandoc-bin#f73e639",
-    "pdc": "^0.2.2",
+    "pdc": "cherbst/node-pdc",
     "which": "^1.0.8"
   },
   "devDependencies": {
