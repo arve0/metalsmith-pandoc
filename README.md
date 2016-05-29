@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/metalsmith-pandoc.svg)](https://badge.fury.io/js/metalsmith-pandoc)
+
 # metalsmith-pandoc
 Wrap around [pdc](https://github.com/pvorb/node-pdc). Pandoc needs to be [system installed](http://pandoc.org/installing.html).
 
