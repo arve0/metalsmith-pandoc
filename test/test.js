@@ -4,7 +4,7 @@ var Metalsmith = require('metalsmith');
 var pandoc = require('..');
 
 describe('metalsmith-pandoc', function(){
-  it('should convert markdown files', function(done){
+  it('should convert markdown files to html', function(done){
     Metalsmith('test')
     .use(pandoc())
     .destination('build-html')
