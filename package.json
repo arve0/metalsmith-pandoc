@@ -9,25 +9,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iilab/metalsmith-pandoc.git"
+    "url": "https://github.com/arve0/metalsmith-pandoc"
   },
   "keywords": [
     "pandoc",
     "markdown",
     "metalsmith"
   ],
-  "author": {
-    "name": "Jun Matsushita"
-  },
+  "author": "Arve Seljebu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/iilab/metalsmith-pandoc/issues"
+    "url": "https://github.com/arve0/metalsmith-pandoc/issues"
   },
-  "homepage": "https://github.com/iilab/metalsmith-pandoc",
+  "homepage": "https://github.com/arve0/metalsmith-pandoc",
   "dependencies": {
     "async": "^2.0.0-rc.2",
     "debug": "^2.1.0",
     "multimatch": "^2.1.0",
+    "pandoc-bin": "arve0/pandoc-bin#f73e639",
     "pdc": "cherbst/node-pdc",
     "which": "^1.0.8"
   },
