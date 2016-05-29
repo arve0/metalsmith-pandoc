@@ -28,7 +28,7 @@
     "debug": "^2.1.0",
     "multimatch": "^2.1.0",
     "pdc": "cherbst/node-pdc",
-    "system-install": "0.0.4",
+    "system-install": "^1.0.0",
     "which": "^1.0.8"
   },
   "devDependencies": {

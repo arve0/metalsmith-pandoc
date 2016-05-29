@@ -1,16 +1,14 @@
 var debug     = require('debug')('metalsmith-pandoc');
 var which     = require('which');
-var fs        = require('fs');
-var pdc       = require('pdc');
+var install   = require('system-install')();
 
-// use system installed pandoc first
-which('pandoc', function(err,cmd){
-  if (!err) {
-      debug('Found pandoc:' + cmd)
-      pdc.path = cmd;
-    }
-  else {
-    console.err('Please check that pandoc is installed on your system.')
+// Make sure pandoc is installed
+which('pandoc', function(err, cmd){
+  if (err) {
+    // TODO: ask user to accept installation via system package manager.
+    console.error('metalsmith-pandoc: ERROR, pandoc not found.');
+    console.error('Install pandoc on your system with `' + install + ' pandoc`.');
     process.exit(1);
   }
+  debug('Found pandoc: ' + cmd)
 });

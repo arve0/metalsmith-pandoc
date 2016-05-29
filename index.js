@@ -12,9 +12,10 @@ var install   = require('system-install')();
 try {
   pdc.path = which.sync('pandoc');
 } catch (e) {
-  console.log('metalsmith-pandoc: Cannot find pandoc on the system. Please install it with: ' + install + ' pandoc');
+  var err = 'metalsmith-pandoc: ERROR, pandoc not found. ';
+  err += 'Install pandoc on your system with `' + install + ' pandoc`.';
   // fail hard
-  process.exit(1);
+  throw new Error(err)
 }
 
 /**
