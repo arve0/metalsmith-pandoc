@@ -12,4 +12,3 @@ text *italics* **bold**
 
 Header2
 -------
-
