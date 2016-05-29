@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "node check.js",
+		"preversion": "npm test",
     "prepublish": "npm test",
     "test": "mocha test/test.js"
   },
