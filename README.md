@@ -24,21 +24,29 @@ options = {
   to:   'html5',
   args: [],
   opts: [],
-  pattern: '**/*.md', // minimatch
+  pattern: '**/*.md', // multimatch
   ext: '.html' // extension for output file
 };
 ```
 
-For overriding the defaults, pass an object to plugin:
+To override the defaults, pass an object to the plugin:
 ```
 .use(pandoc({
-  pattern: 'html/**/*.rst',
-  from: 'rst',
-  to: 'markdown',
-  ext: '.md'
+  pattern: ['rsts/*.md', 'docs/**/*.md'],
+  args: ['--columns=80'],
+  from: 'markdown',
+  to: 'rst',
+  ext: '.rst'
 }))
 ```
 See [pdc](https://github.com/pvorb/node-pdc#api) and [pandoc](http://johnmacfarlane.net/pandoc/README.html) for more detailed description of options.
+
+
+## Release
+```sh
+npm version major|minor|patch
+npm publish
+```
 
 ## Credit
 Stole code from [metalsmith-markdown](https://github.com/segmentio/metalsmith-markdown).
