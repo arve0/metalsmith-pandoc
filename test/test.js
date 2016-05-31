@@ -10,7 +10,7 @@ describe('metalsmith-pandoc', function(){
     .destination('build-html')
     .build(function(err){
       if (err) return done(err);
-      equal('test/expected-html', 'test/build-html');
+      equal('test/build-html', 'test/expected-html');
       done();
     });
   });
@@ -24,7 +24,7 @@ describe('metalsmith-pandoc', function(){
     .destination('build-rst')
     .build(function(err){
       if (err) return done(err);
-      equal('test/expected-rst', 'test/build-rst');
+      equal('test/build-rst', 'test/expected-rst');
       done();
     });
   });
