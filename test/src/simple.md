@@ -1,13 +1,9 @@
 This is a markdown dummy file for testing
 
-# Header 1
+# Header
+text *italics* **bold**
+
+- item one
+- item two
+
 text
-*italics*
-**bold**
-
-```python
-for f in files:
-    print(f)
-```
-
-## Header2 {.withclass}
