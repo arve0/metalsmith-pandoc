@@ -1,14 +1,11 @@
 This is a markdown dummy file for testing
 
-Header 1
-========
+Header
+======
 
 text *italics* **bold**
 
-.. code:: python
+-  item one
+-  item two
 
-    for f in files:
-        print(f)
-
-Header2
--------
+text
