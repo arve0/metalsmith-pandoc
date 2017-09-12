@@ -2,6 +2,7 @@ var assert = require('assert');
 var equal = require('assert-dir-equal');
 var Metalsmith = require('metalsmith');
 var pandoc = require('..');
+var fs = require('fs');
 
 describe('metalsmith-pandoc', function(){
   it('should convert markdown files to html', function(done){
@@ -27,5 +28,35 @@ describe('metalsmith-pandoc', function(){
       equal('test/build-rst', 'test/expected-rst');
       done();
     });
+  });
+
+  it('should be able to process 20 thousand files', function(done){
+    var many = 20000;
+    this.timeout(0);
+
+    Metalsmith('test')
+    .destination('out')
+    .concurrency(1000)  // avoid file table overflow (ENFILE)
+    .use(function (files) {
+      // add fake files
+      for (var i = 0; i < many; i += 1) {
+        var filename = i + '.md';
+        files[filename] = {
+          title: 'fake ' + i,
+          contents: 'sample markdown'
+        };
+      }
+    })
+    .use(pandoc({
+      pattern: '**/*.html'  // do not match the files
+    }))
+    .use(function (files) {
+      // remove fake files
+      for (var i = 0; i < many; i += 1) {
+        var filename = i + '.md';
+        delete files[filename];
+      }
+    })
+    .build(done);
   });
 });
