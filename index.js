@@ -39,13 +39,9 @@ function plugin(options){
   var extension = options.ext || '.html';
 
   return function(files, metalsmith, done){
-    async.eachLimit(Object.keys(files), 100, function(file, cb){
-      debug('Checking file: %s', file);
-      debug('Multimatch: %s %s %s', file, pattern, match(file, pattern))
-      if (match(file, pattern).length == 0) {
-        cb(); // count
-        return; // do nothing
-      }
+    selectedFiles = match(Object.keys(files), pattern)
+    async.eachLimit(selectedFiles, 100, function(file, cb){
+
       var data = files[file];
       var dir = dirname(file);
       var html = basename(file, extname(file)) + extension;
