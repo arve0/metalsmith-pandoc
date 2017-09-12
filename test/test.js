@@ -47,7 +47,9 @@ describe('metalsmith-pandoc', function(){
         };
       }
     })
-    .use(pandoc())
+    .use(pandoc({
+      pattern: '**/*.html'  // do not match the files
+    }))
     .build(function(err){
       if (err) return done(err);
       assert.equal(fs.readdirSync('test/out').length, many + 1);
