@@ -50,10 +50,13 @@ describe('metalsmith-pandoc', function(){
     .use(pandoc({
       pattern: '**/*.html'  // do not match the files
     }))
-    .build(function(err){
-      if (err) return done(err);
-      assert.equal(fs.readdirSync('test/out').length, many + 1);
-      done();
-    });
+    .use(function (files) {
+      // remove fake files
+      for (var i = 0; i < many; i += 1) {
+        var filename = i + '.md';
+        delete files[filename];
+      }
+    })
+    .build(done);
   });
 });
