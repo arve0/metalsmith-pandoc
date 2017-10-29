@@ -1,4 +1,3 @@
-//https://github.com/goumang2010/node-pdc/blob/2b89fe72133cc3b93a45f175fe756085f54124f3/pdc.js modified metalsmith-pandoc that handles binary data 
 var basename  = require('path').basename;
 var dirname   = require('path').dirname;
 var extname   = require('path').extname;
