@@ -1,3 +1,4 @@
+//https://github.com/goumang2010/node-pdc/blob/2b89fe72133cc3b93a45f175fe756085f54124f3/pdc.js modified metalsmith-pandoc that handles binary data 
 var basename  = require('path').basename;
 var dirname   = require('path').dirname;
 var extname   = require('path').extname;
@@ -49,25 +50,53 @@ function plugin(options){
 
       debug('Converting file %s', file);
       var md = data.contents.toString();
-      pdc(md, from, to, args, opts, function(err,res){
-        if (err){
-          msg = 'metalsmith-pandoc: ' + file + ' - ' + err;
-          debug(msg);
-          cb(msg);
-          return;
-        }
-        if (res === undefined || res === ''){
-          var msg = 'ERROR: nothing returned from pandoc for file ' + file;
-          debug(msg);
-          cb(new Error(msg));
-          return;
-        }
-        debug('Converted file %s. Converted: %s...', file, res.substring(0,10).replace('\n',''));
-        data.contents = new Buffer(res);
+
+      pandoc = pdc.stream(from, to, args, opts);
+
+      var result = new Buffer(0);
+      var chunks = [];
+      var size = 0;
+      var error = '';
+
+      // listen on error
+      pandoc.on('error', function (err) {
+        debug('error: ', err);
+        return cb(err);
+      });
+
+      // collect result data
+      pandoc.stdout.on('data', function (data) {
+        chunks.push(data);
+        size += data.length;
+      });
+
+      // collect error data
+      pandoc.stderr.on('data', function (data) {
+        error += data;
+      });
+
+      // listen on exit
+      pandoc.on('close', function (code) {
+        var msg = '';
+        if (code !== 0)
+          msg += 'pandoc exited with code ' + code + (error ? ': ' : '.');
+        if (error)
+          msg += error;
+
+        if (msg)
+          return cb(new Error(msg));
+
+        var result = Buffer.concat(chunks, size);
+
+        data.contents = result;
         delete files[file];
         files[html] = data;
-        cb();
+        cb(null, result);
       });
+
+      // finally, send source string
+      pandoc.stdin.end(md, 'utf8');
+
     }, done);
   };
 }
