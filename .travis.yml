@@ -3,6 +3,6 @@ node_js:
   - 'stable'
 notifications:
   email: false
-addons:
-  apt_packages:
-    - pandoc
+before_install:
+  - sudo wget https://github.com/jgm/pandoc/releases/download/2.0.1/pandoc-2.0.1-1-amd64.deb
+  - sudo dpkg -i pandoc-2.0.1-1-amd64.deb
