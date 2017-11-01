@@ -1,7 +1,7 @@
 [![npm version](https://badge.fury.io/js/metalsmith-pandoc.svg)](https://badge.fury.io/js/metalsmith-pandoc) [![Build Status](https://travis-ci.org/arve0/metalsmith-pandoc.svg?branch=master)](https://travis-ci.org/arve0/metalsmith-pandoc)
 
 # metalsmith-pandoc
-Wrap around [pdc](https://github.com/pvorb/node-pdc). Pandoc needs to be [system installed](http://pandoc.org/installing.html).
+Wrap around [pdc](https://github.com/pvorb/node-pdc), which lets you transform files with pandoc. For example from markdown to Word (docx). Pandoc needs to be [system installed](http://pandoc.org/installing.html).
 
 ## Install
 ```sh
@@ -23,7 +23,7 @@ options = {
   from: 'markdown',
   to:   'html5',
   args: [],
-  opts: [],
+  opts: {},
   pattern: '**/*.md', // multimatch
   ext: '.html' // extension for output file
 };

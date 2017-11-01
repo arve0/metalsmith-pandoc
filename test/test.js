@@ -30,6 +30,19 @@ describe('metalsmith-pandoc', function(){
     });
   });
 
+  it('should convert markdown files to docx', function(done){
+    Metalsmith('test')
+    .use(pandoc({
+      to: 'docx',
+      ext: '.docx'
+    }))
+    .destination('build-docx')
+    .build(function(err){
+      if (err) return done(err);
+      done();
+    });
+  });
+
   it('should be able to process 20 thousand files', function(done){
     var many = 20000;
     this.timeout(0);

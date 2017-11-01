@@ -34,9 +34,13 @@ function plugin(options){
   var from = options.from || 'markdown';
   var to   = options.to   || 'html5';
   var args = options.args || [];
-  var opts = options.opts || [];
+  var opts = options.opts || {};
   var pattern = options.pattern || '**/*.md';
   var extension = options.ext || '.html';
+
+  if (to === 'docx' || to === 'pdf') {
+    opts.encoding = 'binary'
+  }
 
   return function(files, metalsmith, done){
     selectedFiles = match(Object.keys(files), pattern)
