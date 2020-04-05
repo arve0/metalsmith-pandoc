@@ -56,7 +56,7 @@ function plugin(options){
 
       pandoc = pdc.stream(from, to, args, opts);
 
-      var result = new Buffer(0);
+      var result = Buffer.alloc(0);
       var chunks = [];
       var size = 0;
       var error = '';
