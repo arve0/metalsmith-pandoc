@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/arve0/metalsmith-pandoc",
   "dependencies": {
-    "async": "^2.5.0",
+    "async": "^3.2.2",
     "debug": "^3.1.0",
     "multimatch": "^4.0.0",
     "pdc": "^0.2.3",
